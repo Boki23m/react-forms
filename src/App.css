@@ -1,12 +1,11 @@
 .App {
-  text-align: center;
-  margin-top: 25px;
+  margin: 40px;
 }
 
 .form-control {
-  width: 50%;
+  width: 40%;
   border: 1px solid #ccc;
-  padding: 10px; 
+  padding: 5px; 
 }
 
 .control-error {
