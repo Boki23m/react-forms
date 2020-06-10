@@ -5,8 +5,10 @@ import TextInput from './forms/TextInput';
 import validate from './forms/validate';
 import TextArea from './forms/TextArea';
 import Email from './forms/Email';
+import Password from './forms/Password';
 import Select from './forms/Select';
 import Radio from './forms/Radio';
+import Checkbox from './forms/Checkbox';
 
 class App extends Component {
 
@@ -22,17 +24,7 @@ class App extends Component {
           placeholder: 'What is your name?',
           valid: false,
           validationRules: {
-            minLength: 4,
-            isRequired: true
-          },
-          touched: false
-        },
-        address: {
-          value: '',
-          placeholder: 'What is your address?',
-          valid: false,
-          validationRules: {
-            minLength: 4,
+            minLength: 3,
             isRequired: true
           },
           touched: false
@@ -47,6 +39,16 @@ class App extends Component {
           },
           touched: false
         },
+        my_password: {
+          value: '',
+          placeholder: 'What is your password?',
+          valid: false,
+          validationRules: {
+            minLength: 6,
+            isRequired: true
+          },
+          touched: false
+        },
         gender: {
           value: '',
           placeholder: 'What is your gender?',
@@ -56,6 +58,7 @@ class App extends Component {
             isRequired: true,
           },
           options: [
+            { value: '', displayValue: 'Select your gender?'},
             { value: 'male', displayValue: 'Male' },
             { value: 'female', displayValue: 'Female' }
           ]
@@ -72,10 +75,31 @@ class App extends Component {
             { value: 0, displayValue: 'No' },
             { value: 1, displayValue: 'Yes' }
           ]
+        },
+        my_box: {
+          value: '',
+          placeholder: 'Are you a frontend developer?',
+          valid: false,
+          touched: false,
+          validationRules: {
+            isRequired: true,
+          },
+          options: [
+            { value: 0, displayValue: 'No' },
+            { value: 1, displayValue: 'Yes' }
+          ]
+        },
+        message: {
+          value: '',
+          placeholder: 'What is your message?',
+          valid: false,
+          validationRules: {
+            minLength: 5,
+            isRequired: true
+          },
+          touched: false
         }
-
       }
-
     }
   }
 
@@ -115,7 +139,6 @@ class App extends Component {
     for (let formElementId in this.state.formControls) {
       formData[formElementId] = this.state.formControls[formElementId].value
     }
-
     console.dir(formData);
   }
 
@@ -131,19 +154,19 @@ class App extends Component {
           touched={this.state.formControls.name.touched}
           valid={this.state.formControls.name.valid}
         />
-        <TextArea name="address"
-          placeholder={this.state.formControls.address.placeholder}
-          value={this.state.formControls.address.value}
-          onChange={this.changeHandler}
-          touched={this.state.formControls.address.touched}
-          valid={this.state.formControls.address.valid}
-        />
         <Email name="my_email"
           placeholder={this.state.formControls.my_email.placeholder}
           value={this.state.formControls.my_email.value}
           onChange={this.changeHandler}
           touched={this.state.formControls.my_email.touched}
           valid={this.state.formControls.my_email.valid}
+        />
+        <Password name="my_password"
+          placeholder={this.state.formControls.my_password.placeholder}
+          value={this.state.formControls.my_password.value}
+          onChange={this.changeHandler}
+          touched={this.state.formControls.my_password.touched}
+          valid={this.state.formControls.my_password.valid}
         />
         <Select name="gender"
           value={this.state.formControls.gender.value}
@@ -159,9 +182,24 @@ class App extends Component {
           touched={this.state.formControls.my_radio.touched}
           valid={this.state.formControls.my_radio.valid}
         />
+        <Checkbox name="my_box"
+          value={this.state.formControls.my_box.value}
+          onChange={this.changeHandler}
+          options={this.state.formControls.my_box.options}
+          touched={this.state.formControls.my_box.touched}
+          valid={this.state.formControls.my_box.valid}
+        />
+        <TextArea name="message"
+          placeholder={this.state.formControls.message.placeholder}
+          value={this.state.formControls.message.value}
+          onChange={this.changeHandler}
+          touched={this.state.formControls.message.touched}
+          valid={this.state.formControls.message.valid}
+        />
         <br />
         <button onClick={this.formSubmitHandler}
           disabled={!this.state.formIsValid}
+          className="btn"
         >
           Submit
           </button>

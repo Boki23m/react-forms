@@ -10,6 +10,7 @@ const Checkbox = props => {
 
     return (
         <div className="form-group">
+            <h5>Are you interested in a position?</h5>
             {props.options.map(option => (
                 <div className="form-group" key={option.value}>
                     <label>{option.displayValue}</label>

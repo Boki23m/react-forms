@@ -3,11 +3,17 @@
 }
 
 .form-control {
-  width: 40%;
+  width: 50%;
   border: 1px solid #ccc;
   padding: 5px; 
 }
 
 .control-error {
   border: 1px solid red;
+}
+
+.btn {
+  padding: 10px;
+  background-color: #0041C2;
+  color: white;
 }
